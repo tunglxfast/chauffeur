@@ -1,0 +1,30 @@
+DROP TABLE IF EXISTS entry;
+DROP TABLE IF EXISTS info_entry;
+
+CREATE TABLE info_entry (
+    id IDENTITY PRIMARY KEY,
+    code VARCHAR(50),
+    title VARCHAR(255),
+    content TEXT,
+    image_url VARCHAR(255)
+);
+
+CREATE TABLE entry (
+    id IDENTITY PRIMARY KEY,
+    title VARCHAR(255),
+    description TEXT,
+    image_url VARCHAR(255),
+    published_date TIMESTAMP
+);
+
+-- info_entry
+INSERT INTO info_entry (code, title, content, image_url) VALUES 
+('intro', 'Highest quality chauffeur services - Call 12345', 'Welcome to our premium chauffeur service...', '/images/intro.jpg'),
+('about', 'About Us', 'We provide professional private driver services for business and personal travel...', '/images/about.jpg');
+
+-- entry
+INSERT INTO entry (title, description, image_url, published_date) VALUES
+('Vintage Oldtimer', 'Classic luxury rides for special occasions.', '/images/img1.jpg', DATE '2024-06-01'),
+('Rolls Royce Experience', 'Ride in style and prestige with our Rolls Royce fleet.', '/images/img2.jpg', DATE '2024-06-02'),
+('Mercedes Business Class', 'Perfect for executive transport with maximum comfort.', '/images/img3.jpg', DATE '2024-06-03');
+

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chauffeur Services Home Page</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container-fluid site-wrapper">
+        <!-- Header -->
+        <div class="container-fluid header-wrapper" id="header">
+            <div class="container">
+                <div class="title-wrapper">
+                    <div class="title-wrapper-inner">
+                        <div class="title title-only">Chauffeur Services</div>
+                    </div>
+                </div>
+                <div class="navbar navbar-compact">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <div class="nav-collapse collapse">
+                                <ul class="nav" id="topMenu" data-submenu="horizontal">
+                                    <li class="active"><a href="/">Home</a></li>
+                                    <li><a href="/gallery">Gallery</a></li>
+                                    <li><a href="/contact">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Content -->
+        <div class="container-fluid content-wrapper" id="content">
+            <div class="container">
+                <div class="row-fluid content-inner">
+                    <div id="left" class="span9">
+                        <div class="wrapper">
+                            <div class="content">
+    
+                                <!-- Banner Image -->
+                                <div class="section article">
+                                    <div class="content">
+                                        <div class="img-simple span12">
+                                            <div class="image">
+                                                <img th:src="${intro.imageUrl}" alt="Intro Image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- Intro Text -->
+                                <div class="section article">
+                                    <div class="heading">
+                                        <h3 th:text="${intro.title}">Intro Title</h3>
+                                    </div>
+                                    <div class="content">
+                                        <p><span th:text="${intro.content}">Intro content here</span></p>
+                                    </div>
+                                </div>
+    
+                                <!-- About Us -->
+                                <div class="section article">
+                                    <div class="heading">
+                                        <h3 th:text="${about.title}">About Us</h3>
+                                    </div>
+                                    <div class="content">
+                                        <div class="img-simple span6 pull-right">
+                                            <div class="image">
+                                                <img th:src="${about.imageUrl}" alt="About Image">
+                                            </div>
+                                        </div>
+                                        <p><span th:text="${about.content}">About content here</span></p>
+                                    </div>
+                                </div>
+    
+                                <!-- Promotions -->
+                                <div class="section">
+                                    <div class="content">
+                                        <ul class="thumbnails column-article-section">
+                                            <li class="span4" th:each="promo : ${promotions}">
+                                                <div class="img-simple span12">
+                                                    <div class="image">
+                                                        <img th:src="${promo.imageUrl}" th:alt="${promo.title}">
+                                                    </div>
+                                                </div>
+                                                <h4 th:text="${promo.title}">Title</h4>
+                                                <p th:text="${promo.description}">Description</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Sidebar -->
+                    <div id="right" class="span3">
+                        <div class="sidebar">
+                            <div class="wrapper share-box">
+                                <div class="heading"><h4>Share this page</h4></div>
+                                <div class="content">
+                                    <ul>
+                                        <li><a href="#"><span>Share on Facebook</span></a></li>
+                                        <li><a href="#"><span>Share on Twitter</span></a></li>
+                                        <li><a href="#"><span>Share on Google+</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="wrapper viral-box">
+                                <div class="heading"><h4>Create a website</h4></div>
+                                <div class="content">
+                                    <p>Everybody can create a website, it's easy.</p>
+                                    <div class="bottom">
+                                        <a href="#" class="btn btn-block">Try it for FREE now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    
+        <!-- Footer -->
+        <div class="container-fluid footer-wrapper" id="footer">
+            <div class="container">
+                <div class="footer-info">
+                    <div class="footer-info-text">
+                        This website was created with SimpleSite
+                    </div>
+                    <div class="footer-powered-by">
+                        <a href="#">Get your own FREE website. Click here!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </body>
+</html>
