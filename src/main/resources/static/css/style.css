@@ -12384,6 +12384,6 @@ body .guest-book .item>.controls span {
 
 /* add new */
 body {
-    background: url("/images/bg-left-right.jpg") repeat-y center top #000; /* ảnh nền nằm giữa và lặp theo chiều dọc */
-    background-size: cover; /* hoặc 'contain' nếu muốn co theo chiều rộng */
+    background: url("/images/bg-left-right.jpg") repeat-y center top #000; 
+    background-size: cover; 
 }
