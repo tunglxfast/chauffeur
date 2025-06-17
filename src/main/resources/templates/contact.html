@@ -1,10 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Chauffeur Services Contact Page</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<div class="container-fluid site-wrapper">
 
+    <!-- Header -->
+    <div th:replace="fragments/header :: frag-header('contact')"></div>
+
+    <!-- Content -->
+    <div class="container-fluid content-wrapper" id="content">
+        <div class="container">
+            <div class="row-fluid content-inner">
+                <div id="left" class="span9">
+                    <div class="wrapper contact">
+                        <div class="heading">
+                            <h1 class="page-title">Contact</h1>
+                        </div>
+
+                        <div class="content">
+                            <div class="section">
+                                <div class="content">
+                                    <div class="span12 contact-text">
+                                        <h4>Chauffeur Service</h4>
+                                        <p>Address:<br>City:<br>Country:</p>
+                                        <p>Tel: 123456<br>Email: your-email@your-email.com</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="section contact-form">
+                                <div class="content">
+
+                                    <p th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></p>
+                                    <p th:if="${errorMessage}" class="alert alert-error" th:text="${errorMessage}"></p>
+
+                                    <p>Write your message here. Fill out the form:</p>
+                                    <form th:action="@{/contact}" method="post" th:object="${contact}">
+                                        <fieldset>
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <input type="text" th:field="*{name}" placeholder="Write your name here">
+                                                </div>
+                                                <div class="span6">
+                                                    <input type="email" th:field="*{email}" placeholder="Write your email here">
+                                                </div>
+                                            </div>
+                                            <div class="row-fluid">
+                                                <div class="span12">
+                                                    <textarea th:field="*{message}" placeholder="Write your message here"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row-fluid">
+                                                <div class="span12">
+                                                    <button class="btn btn-primary pull-right" type="submit">Send - Click here</button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div id="right" class="span3">
+                    <div th:replace="fragments/sidebar :: frag-sidebar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="fragments/footer :: frag-footer"></div>
+</div>
 </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="frag-header(active)">
+    <div class="container-fluid header-wrapper" id="header">
+        <div class="container">
+            <div class="title-wrapper">
+                <div class="title-wrapper-inner">
+                    <div class="title title-only">Chauffeur Services</div>
+                </div>
+            </div>
+            <div class="navbar navbar-compact">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <div class="nav-collapse collapse">
+                            <ul class="nav" id="topMenu" data-submenu="horizontal">
+                                <li th:classappend="${active == 'home'} ? 'active' : ''"><a href="/">Home</a></li>
+                                <li th:classappend="${active == 'gallery'} ? 'active' : ''"><a href="/gallery">Gallery</a></li>
+                                <li th:classappend="${active == 'contact'} ? 'active' : ''"><a href="/contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

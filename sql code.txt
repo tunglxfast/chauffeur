@@ -1,5 +1,7 @@
 DROP TABLE IF EXISTS entry;
 DROP TABLE IF EXISTS info_entry;
+DROP TABLE IF EXISTS page_view;
+DROP TABLE IF EXISTS contact_message;
 
 CREATE TABLE info_entry (
     id IDENTITY PRIMARY KEY,
@@ -17,14 +19,29 @@ CREATE TABLE entry (
     published_date TIMESTAMP
 );
 
--- info_entry
+CREATE TABLE page_view (
+    page VARCHAR(255) PRIMARY KEY,
+    count BIGINT
+);
+
+CREATE TABLE contact_message (
+    id IDENTITY PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(255),
+    message TEXT,
+    sentAt TIMESTAMP
+);
+
+/* ------------------------------------------------------------------------------------------ */
+
 INSERT INTO info_entry (code, title, content, image_url) VALUES 
 ('intro', 'Highest quality chauffeur services - Call 12345', 'Welcome to our premium chauffeur service...', '/images/intro.jpg'),
 ('about', 'About Us', 'We provide professional private driver services for business and personal travel...', '/images/about.jpg');
 
--- entry
 INSERT INTO entry (title, description, image_url, published_date) VALUES
 ('Vintage Oldtimer', 'Classic luxury rides for special occasions.', '/images/img1.jpg', DATE '2024-06-01'),
 ('Rolls Royce Experience', 'Ride in style and prestige with our Rolls Royce fleet.', '/images/img2.jpg', DATE '2024-06-02'),
 ('Mercedes Business Class', 'Perfect for executive transport with maximum comfort.', '/images/img3.jpg', DATE '2024-06-03');
 
+INSERT INTO page_view (page, count) VALUES
+('entry', 0);
