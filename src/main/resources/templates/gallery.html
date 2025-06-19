@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Chauffeur Services Gallery</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-
+    <div class="container-fluid site-wrapper">
+        <!-- Header -->
+        <div th:replace="fragments/header :: frag-header('gallery')"></div>
+    
+        <!-- Content -->
+        <div class="container-fluid content-wrapper" id="content">
+            <div class="container">
+                <div class="row-fluid content-inner">
+                    <div id="left" class="span9">
+                        <div class="wrapper">
+                            <div class="content">
+                                <div class="section article">
+                                    <div class="heading">
+                                        <h3>Gallery</h3>
+                                    </div>
+                                    <div class="content">
+                                        <!-- Video -->
+                                        <div class="img-simple span12" th:if="${mainVideoUrl != null}">
+                                            <div class="image">
+                                                <video th:src="${mainVideoUrl}" controls style="width:100%; max-height:400px; background:#000;"></video>
+                                            </div>
+                                        </div>
+                                        <!-- Picture grid -->
+                                        <div class="gallery-thumbnails" style="margin-top: 30px;">
+                                            <ul class="thumbnails column-article-section">
+                                                <li class="span3" th:each="img : ${galleryImages}">
+                                                    <div class="img-simple span12">
+                                                        <div class="image">
+                                                            <img th:src="${img}" style="height:100px; object-fit:cover; width:100%;">
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Sidebar -->
+                    <div id="right" class="span3">
+                        <div th:replace="fragments/sidebar :: frag-sidebar"></div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    
+        <!-- Footer -->
+        <div th:replace="fragments/footer :: frag-footer"></div>
+    </div>
 </body>
 </html>
