@@ -30,7 +30,7 @@
                                 </div>
     
                                 <!-- Intro Text -->
-                                <div class="section article">
+                                <div class="section article" th:if="${intro != null}">
                                     <div class="heading">
                                         <h3 th:text="${intro.title}">Intro Title</h3>
                                     </div>
@@ -40,7 +40,7 @@
                                 </div>
     
                                 <!-- About Us -->
-                                <div class="section article">
+                                <div class="section article" th:if="${about != null}">
                                     <div class="heading">
                                         <h3 th:text="${about.title}">About Us</h3>
                                     </div>

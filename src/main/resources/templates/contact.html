@@ -43,15 +43,15 @@
                                         <fieldset>
                                             <div class="row-fluid">
                                                 <div class="span6">
-                                                    <input type="text" th:field="*{name}" placeholder="Write your name here">
+                                                    <input type="text" th:field="*{name}" placeholder="Write your name here" required>
                                                 </div>
                                                 <div class="span6">
-                                                    <input type="email" th:field="*{email}" placeholder="Write your email here">
+                                                    <input type="email" th:field="*{email}" placeholder="Write your email here" required>
                                                 </div>
                                             </div>
                                             <div class="row-fluid">
                                                 <div class="span12">
-                                                    <textarea th:field="*{message}" placeholder="Write your message here"></textarea>
+                                                    <textarea th:field="*{message}" placeholder="Write your message here" required></textarea>
                                                 </div>
                                             </div>
                                             <div class="row-fluid">
