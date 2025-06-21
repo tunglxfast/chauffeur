@@ -23,22 +23,26 @@
                                     </div>
                                     <div class="content">
                                         <!-- Video -->
-                                        <div class="img-simple span12" th:if="${mainVideoUrl != null}">
-                                            <div class="image">
-                                                <video th:src="${mainVideoUrl}" controls style="width:100%; max-height:400px; background:#000;"></video>
+                                        <div class="section article">
+                                            <div class="content">
+                                                <video th:src="${galleryVideoUrl}"
+                                                       controls
+                                                       style="width:100%; max-height:400px; background:#000;"></video>
                                             </div>
                                         </div>
                                         <!-- Picture grid -->
-                                        <div class="gallery-thumbnails" style="margin-top: 30px;">
-                                            <ul class="thumbnails column-article-section">
-                                                <li class="span3" th:each="img : ${galleryImages}">
-                                                    <div class="img-simple span12">
-                                                        <div class="image">
-                                                            <img th:src="${img}" style="height:100px; object-fit:cover; width:100%;">
+                                        <div class="section article" style="margin-top: 30px;">
+                                            <div class="content">
+                                                <ul class="thumbnails column-article-section">
+                                                    <li class="span3" th:each="img : ${galleryImages}">
+                                                        <div class="img-simple span12">
+                                                            <div class="image">
+                                                                <img th:src="${img}" style="height:100px; object-fit:cover; width:100%;">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
