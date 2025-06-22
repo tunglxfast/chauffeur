@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Chauffeur Services Gallery</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/gallery_style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="container-fluid site-wrapper">
@@ -24,7 +26,7 @@
                                     <div class="content">
                                         <!-- Video -->
                                         <div class="section article">
-                                            <div class="content">
+                                            <div class="content video-wrapper">
                                                 <video th:src="${galleryVideoUrl}"
                                                        controls
                                                        style="width:100%; max-height:400px; background:#000;"></video>
@@ -34,10 +36,12 @@
                                         <div class="section article" style="margin-top: 30px;">
                                             <div class="content">
                                                 <ul class="thumbnails column-article-section">
-                                                    <li class="span3" th:each="img : ${galleryImages}">
-                                                        <div class="img-simple span12">
+                                                    <li th:each="entry : ${entries}">
+                                                        <div class="img-simple">
                                                             <div class="image">
-                                                                <img th:src="${img}" style="height:100px; object-fit:cover; width:100%;">
+                                                                <img th:src="${entry.imageUrl}"
+                                                                     th:alt="${entry.title}"
+                                                                     th:attr="onclick=|showImageInLightbox('${entry.imageUrl}', '${entry.title}')|">
                                                             </div>
                                                         </div>
                                                     </li>
@@ -61,5 +65,47 @@
         <!-- Footer -->
         <div th:replace="fragments/footer :: frag-footer"></div>
     </div>
+
+    <!-- Lightbox container -->
+    <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+    background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+
+        <!-- Popup box -->
+        <div style="background: #111; padding: 30px; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.7); max-width: 90vw; max-height: 90vh; overflow: auto; text-align: center; position: relative;">
+
+            <!-- Close button -->
+            <span onclick="closeLightbox()"
+                  style="position: absolute; top: 10px; right: 15px; font-size: 30px; color: white; cursor: pointer;">&times;</span>
+
+            <!-- Image -->
+            <img id="lightbox-img" src=""
+                 style="max-width: 100%; height: auto; display: block; margin: 0 auto 15px auto;">
+
+            <!-- Title -->
+            <div id="lightbox-title" style="color: white; font-size: 18px;"></div>
+        </div>
+    </div>
+    <!-- JavaScript script -->
+    <script>
+        function showImageInLightbox(url, title) {
+            const lightbox = document.getElementById("lightbox");
+            const img = document.getElementById("lightbox-img");
+            const caption = document.getElementById("lightbox-title");
+
+            img.src = url;
+            caption.innerText = title || "";
+            lightbox.style.display = "flex";
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape") {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>

@@ -25,7 +25,7 @@ public class GalleryController {
         long viewCount = pageViewService.increaseView(PageName.ENTRY.name);
         List<Character> viewCountDigits = pageViewService.getPaddedViewCountDigits(viewCount);
         model.addAttribute("galleryVideoUrl", galleryVideoService.getMainVideo());
-        model.addAttribute("galleryImages", entryService.getAllImageUrls());
+        model.addAttribute("entries", entryService.findAll());
         model.addAttribute("viewCountDigits", viewCountDigits);
         return "gallery";
     }
