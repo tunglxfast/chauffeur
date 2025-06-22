@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Messages</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .content {
+            width: 100%;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: aquamarine;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="container-fluid header-wrapper" id="header">
+        <div class="container">
+            <div class="title-wrapper">
+                <div class="title-wrapper-inner">
+                    <div class="title title-only">Chauffeur Services</div>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+    <div class="main-content" style="margin: 10px;">
+            <h1>Contact Messages</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="message : ${messages}">
+                        <td th:text="${message.id}"></td>
+                        <td th:text="${message.name}"></td>
+                        <td th:text="${message.email}"></td>
+                        <td th:text="${message.message}"></td>
+                        <td th:text="${message.sentAt}"></td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+
+    <div th:replace="fragments/footer :: frag-footer"></div>
+</div>
+
+</body>
+</html> 

@@ -6,16 +6,35 @@
 
 ul.thumbnails.column-article-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 0;
     list-style: none;
     justify-items: center;
 }
 
+@media (max-width: 992px) {
+    ul.thumbnails.column-article-section {
+        grid-template-columns: repeat(3, 1fr); /* Tablet: 3 pics/row */
+    }
+}
+
+@media (max-width: 768px) {
+    ul.thumbnails.column-article-section {
+        grid-template-columns: repeat(2, 1fr); /* Mobile: 2 pics/row */
+    }
+}
+
+@media (max-width: 480px) {
+    ul.thumbnails.column-article-section {
+        grid-template-columns: 1fr;
+    }
+}
+
 ul.thumbnails.column-article-section li {
     background: white;
     border-radius: 12px;
+    padding: 5px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;

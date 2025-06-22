@@ -5,6 +5,8 @@ import com.lab231.chauffeur.repository.ContactMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ContactMessageService {
     @Autowired
@@ -25,5 +27,9 @@ public class ContactMessageService {
             throw new IllegalArgumentException("Message field can not be blank or empty.");
         }
         return contactMessageRepository.save(contactMessage);
+    }
+
+    public List<ContactMessage> getAllMessages() {
+        return contactMessageRepository.findAll();
     }
 } 
