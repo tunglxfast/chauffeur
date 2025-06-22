@@ -4,6 +4,7 @@ import com.lab231.chauffeur.enums.PageName;
 import com.lab231.chauffeur.model.ContactMessage;
 import com.lab231.chauffeur.service.ContactMessageService;
 import com.lab231.chauffeur.service.PageViewService;
+import com.lab231.chauffeur.service.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,8 @@ public class ContactController {
     private ContactMessageService contactMessageService;
     @Autowired
     private PageViewService pageViewService;
+    @Autowired
+    private AdvertisementService advertisementService;
 
     @GetMapping("/contact")
     public String showForm(Model model) {
@@ -27,6 +30,7 @@ public class ContactController {
         List<Character> viewCountDigits = pageViewService.getPaddedViewCountDigits(viewCount);
         model.addAttribute("viewCountDigits", viewCountDigits);
         model.addAttribute("contact", new ContactMessage());
+        model.addAttribute("advertisement", advertisementService.getFirstAdvertisement());
         return "contact";
     }
 
@@ -41,10 +45,10 @@ public class ContactController {
             model.addAttribute("errorMessage", ex.getMessage());
             model.addAttribute("contact", contact); // keep filled form
         }
-
         long viewCount = pageViewService.getViewCount(PageName.ENTRY.name);
         List<Character> viewCountDigits = pageViewService.getPaddedViewCountDigits(viewCount);
         model.addAttribute("viewCountDigits", viewCountDigits);
+        model.addAttribute("advertisement", advertisementService.getFirstAdvertisement());
         return "contact";
     }
 }

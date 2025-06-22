@@ -4,6 +4,7 @@ import com.lab231.chauffeur.enums.PageName;
 import com.lab231.chauffeur.service.EntryService;
 import com.lab231.chauffeur.service.GalleryVideoService;
 import com.lab231.chauffeur.service.PageViewService;
+import com.lab231.chauffeur.service.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,8 @@ public class GalleryController {
     private GalleryVideoService galleryVideoService;
     @Autowired
     private PageViewService pageViewService;
+    @Autowired
+    private AdvertisementService advertisementService;
 
     @GetMapping("/gallery")
     public String gallery(Model model) {
@@ -27,6 +30,7 @@ public class GalleryController {
         model.addAttribute("galleryVideoUrl", galleryVideoService.getMainVideo());
         model.addAttribute("entries", entryService.findAll());
         model.addAttribute("viewCountDigits", viewCountDigits);
+        model.addAttribute("advertisement", advertisementService.getFirstAdvertisement());
         return "gallery";
     }
 }

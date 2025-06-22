@@ -14,11 +14,16 @@
             </div>
         </div>
         <div class="wrapper viral-box">
-            <div class="heading"><h4>Create a website</h4></div>
-            <div class="content">
-                <p>Everybody can create a website, it's easy.</p>
+            <div class="heading" th:if="${advertisement != null}">
+                <h4 th:if="${advertisement.title != null}" th:text="${advertisement.title}"></h4>
+            </div>
+            <div class="content" th:if="${advertisement != null}">
+                <p th:if="${advertisement.content != null}" th:text="${advertisement.content}"></p>
                 <div class="bottom">
-                    <a href="#" class="btn btn-block">Try it for FREE now</a>
+                    <a th:if="${advertisement.link != null and advertisement.link != null}"
+                    th:href="${advertisement.link}" class="btn btn-block" th:text="${advertisement.buttonText}"></a>
+                    <a th:if="${advertisement.link != null and advertisement.link == null}"
+                    th:href="${advertisement.link}">Link</a>
                 </div>
             </div>
         </div>

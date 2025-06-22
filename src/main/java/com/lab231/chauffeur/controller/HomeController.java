@@ -4,6 +4,7 @@ import com.lab231.chauffeur.enums.PageName;
 import com.lab231.chauffeur.service.EntryService;
 import com.lab231.chauffeur.service.InfoService;
 import com.lab231.chauffeur.service.PageViewService;
+import com.lab231.chauffeur.service.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,9 @@ public class HomeController {
     @Autowired
     private PageViewService pageViewService;
 
+    @Autowired
+    private AdvertisementService advertisementService;
+
     @GetMapping(value = {"/", "index", "/home"})
     public String home(Model model) {
         long viewCount = pageViewService.increaseView(PageName.ENTRY.name);
@@ -33,6 +37,7 @@ public class HomeController {
         model.addAttribute("about", about);
         model.addAttribute("promotions", entryService.findTop3ByOrderByPublishedDateDesc());
         model.addAttribute("viewCountDigits", viewCountDigits);
+        model.addAttribute("advertisement", advertisementService.getFirstAdvertisement());
         return "home";
     }
 }

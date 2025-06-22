@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS info_entry;
 DROP TABLE IF EXISTS page_view;
 DROP TABLE IF EXISTS contact_message;
 DROP TABLE IF EXISTS gallery_video;
+DROP TABLE IF EXISTS advertisement;
 
 CREATE TABLE info_entry (
     id IDENTITY PRIMARY KEY,
@@ -38,6 +39,15 @@ CREATE TABLE gallery_video (
     video_url VARCHAR(255)
 );
 
+CREATE TABLE advertisement (
+    id IDENTITY PRIMARY KEY,
+    title VARCHAR(255),
+    content TEXT,
+    button_text VARCHAR(255),
+    link VARCHAR(255)
+);
+
+
 /* ------------------------------------------------------------------------------------------ */
 
 INSERT INTO info_entry (code, title, content, image_url) VALUES 
@@ -57,3 +67,6 @@ INSERT INTO page_view (page, count) VALUES
 
 INSERT INTO gallery_video (video_url) VALUES
 ('/video/gallery_1.mp4');
+
+INSERT INTO advertisement (title, content, button_text, link) VALUES
+('Create a website', 'Everybody can create a website, it''s easy.', 'Try it for FREE now', '#');
